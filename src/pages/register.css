@@ -1,0 +1,106 @@
+/* Asegúrate de que los círculos estén definidos correctamente */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary-color); /* Puedes personalizar el color */
+}
+
+#circle-one {
+    top: 0;
+    left: 0;
+    width: 80px; /* Reducido el tamaño */
+    height: 80px; /* Reducido el tamaño */
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+#circle-two {
+    bottom: 0;
+    right: 0;
+    width: 80px; /* Reducido el tamaño */
+    height: 80px; /* Reducido el tamaño */
+    transform: translate(50%, 50%);
+    z-index: -1;
+}
+
+#register-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+#register-container {
+    position: relative;
+    width: 18rem; /* Reducido el ancho del contenedor */
+}
+
+#form-container {
+    border: 1px solid hsla(0, 0%, 65%, 0.158);
+    box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+    z-index: 99;
+    padding: 1.5rem; /* Reducido el padding */
+}
+
+#register-form input,
+#register-form select {
+    display: block;
+    padding: 12px; /* Reducido el padding */
+    width: 100%;
+    margin: 1.5rem 0; /* Reducido el espacio entre los inputs */
+    color: var(--color);
+    outline: none;
+    background-color: #9191911f;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    font-size: 14px; /* Reducido el tamaño de la fuente */
+    backdrop-filter: blur(15px);
+}
+
+#register-form input:focus,
+#register-form select:focus {
+    box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.2);
+    animation: wobble 0.3s ease-in;
+}
+
+#register-form button {
+    background-color: var(--primary-color);
+    color: var(--color);
+    display: block;
+    padding: 10px; /* Reducido el padding */
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px; /* Reducido el tamaño de la fuente */
+    letter-spacing: 1px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 1.5rem; /* Reducido el margen */
+    transition: all 0.1s ease-in-out;
+    border: none;
+}
+
+#register-form button:hover {
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+}
+
+@keyframes wobble {
+    0% {
+        transform: scale(1.025);
+    }
+    25% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.025);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

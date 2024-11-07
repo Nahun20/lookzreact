@@ -1,0 +1,119 @@
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-image: url(../images/fondo.png);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Asegura que los enlaces tengan el color correcto */
+}
+
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+/* Sección de recomendaciones */
+.recomendado-section {
+    padding: 4rem 0;
+    background-color: #FFFFFF;
+}
+
+.recomendado-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+.card-recomendado {
+    border: none;
+    text-align: center;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Ajuste de tamaño para las imágenes */
+.card-recomendado img {
+    border-radius: 10px;
+    max-width: 70%; /* Ajusta el tamaño de las imágenes */
+    height: auto;
+}
+
+.card-recomendado h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.card-recomendado p {
+    font-size: 1rem;
+    color: #333;
+    margin: 15px 0;
+}
+
+.card-recomendado .stars {
+    color: #FF5733;
+    font-size: 1.2rem;
+}
+
+/* Navbar Personalizada */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease-out;
+    backdrop-filter: blur(8px) brightness(1.2);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 16px;
+}
+
+.list {
+    list-style-type: none;
+    margin-left: auto;
+    display: flex;
+}
+
+.list li {
+    margin-left: 20px;
+}
+
+.search, .menu {
+    display: inline-block;
+    padding: 0;
+    background: none;
+    border: none;
+    margin-left: 20px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.btn-outline-light {
+    color: #FFFFFF;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.btn-outline-light:hover {
+    background-color: #FF4081;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #000000;
+    color: #B0BEC5;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}

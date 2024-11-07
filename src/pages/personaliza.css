@@ -1,0 +1,144 @@
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-image: url(../images/fondo.png);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Asegura que los enlaces tengan el color correcto */
+}
+
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Personalizada */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease-out;
+    backdrop-filter: blur(8px) brightness(1.2);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 16px;
+}
+
+.list {
+    list-style-type: none;
+    margin-left: auto;
+    display: flex;
+}
+
+.list li {
+    margin-left: 20px;
+}
+
+.search, .menu {
+    display: inline-block;
+    padding: 0;
+    background: none;
+    border: none;
+    margin-left: 20px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.btn-outline-light {
+    color: #FFFFFF;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.btn-outline-light:hover {
+    background-color: #FF4081;
+    border-radius: 5px;
+}
+
+/* Sección Hero */
+.hero {
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero .btn-primary {
+    background-color: #FF4081;
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+}
+
+.hero .btn-primary:hover {
+    background-color: #FF4081;
+    transition: background-color 0.3s ease;
+}
+.color-picker {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #B0BEC5; /* Bordes grises */
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* Estilos para el botón */
+.btn-custom {
+    background-color: #FF4081; /* Rosa vibrante */
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.btn-custom:hover {
+    background-color: #d5006d; /* Color de hover más oscuro */
+}
+button.btn.btn-custom {
+    background-color: #FF4081; /* Rosa vibrante */
+    color: #ffffff;
+    font-weight: bold;
+}
+
+
+/* Estilos para la vista previa de la imagen */
+.img-preview {
+    border: 1px solid #B0BEC5; /* Borde suave */
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ffffff; /* Fondo blanco para la imagen */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para la imagen */
+}
+/* Estilos para el footer */
+/* Footer */
+footer {
+    background-color: #000000;
+    color: #B0BEC5;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
