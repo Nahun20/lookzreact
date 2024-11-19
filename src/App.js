@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { auth, db } from './firebaseConfig'; 
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore'; // Para obtener el rol del usuario desde Firestore
+import { doc, getDoc } from 'firebase/firestore';
 import './App.css';
-import logo from './images/2.png';
+import logo from './images/2.ico';
+import 'font-awesome/css/font-awesome.min.css';
 
 // Importa los componentes de cada página
 import Inicio from './pages/inicio';
 import Catalogo from './pages/catalogo';
+import ProductoDetalle from './pages/ProductoDetalle'; // Importa el componente de detalle
 import Personaliza from './pages/personaliza';
 import Recomendado from './pages/recomendado';
 import Contacto from './pages/contacto';
@@ -17,6 +19,7 @@ import Register from './pages/register';
 import ForgotPassword from './pages/ForgotPassword';
 import AdminDashboard from './pages/AdminDashboard';
 import UserDashboard from './pages/UserDashboard';
+import RegistrarProducto from './pages/RegistrarProducto'; 
 
 function App() {
   const [user, setUser] = useState(null);
@@ -83,14 +86,23 @@ function App() {
                     <Link className="nav-link" to="/recomendado"><i className="fas fa-star"></i> Recomendado</Link>
                   </li>
                   {role === 'admin' && (
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/AdminDashboard"><i className="fas fa-cogs"></i> Admin Dashboard</Link>
-                    </li>
+                    <>
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/AdminDashboard"><i className="fas fa-cogs"></i> Admin Dashboard</Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/registrar-producto"><i className="fas fa-plus"></i> Registrar Producto</Link>
+                      </li>
+                    </>
                   )}
                   <li className="nav-item">
-                    <button className="nav-link" onClick={handleLogout}>
+                    <Link 
+                        className="nav-link" 
+                        to="#" 
+                        onClick={handleLogout} 
+                    >
                       <i className="fas fa-sign-out-alt"></i> Logout
-                    </button>
+                    </Link>
                   </li>
                 </>
               )}
@@ -121,17 +133,20 @@ function App() {
         {/* Rutas para los dashboards */}
         {role === 'admin' ? (
           <Route path="/AdminDashboard" element={<AdminDashboard />} />
-        ) : role === 'user' && user ? (
+        ) : (
           <Route path="/UserDashboard" element={<UserDashboard />} />
-        ) : null} {/* Evita redirección no deseada */}
-      </Routes>
+        )}
 
-      {/* Footer */}
-      <footer className="text-center py-4">
-        <div className="container">
-          <p>&copy; 2024 Lookz. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+        {/* Ruta para el detalle de producto */}
+        <Route path="/producto/:id" element={<ProductoDetalle />} />
+        <Route path="/catalogo" element={<Catalogo />} />
+
+
+        {/* Ruta para registrar producto (solo admin) */}
+        {role === 'admin' && (
+          <Route path="/registrar-producto" element={<RegistrarProducto />} />
+        )}
+      </Routes>
     </>
   );
 }

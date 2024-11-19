@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router } from 'react-router-dom'; // Importa Router aquí
 
+import 'font-awesome/css/font-awesome.min.css';
+
 // Punto de entrada
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

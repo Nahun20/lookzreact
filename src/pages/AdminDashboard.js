@@ -72,9 +72,9 @@ const AdminDashboard = () => {
         <div id="admin-dashboard">
             <h1>Dashboard de Administrador</h1>
             {isAdmin && (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="form-container">
                     <h2>Registrar nuevo Administrador</h2>
-                    {error && <p className="error-message">{error}</p>} {/* Mostrar error si ocurre */}
+                    {error && <p className="error-message">{error}</p>}
                     <input
                         type="email"
                         placeholder="Correo electrónico"

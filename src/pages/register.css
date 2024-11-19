@@ -23,6 +23,14 @@
     z-index: -1;
 }
 
+.error-message-above {
+    color: red;
+    font-size: 12px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 #register-section {
     display: flex;
     justify-content: center;
@@ -37,7 +45,7 @@
 }
 
 #form-container {
-    border: 1px solid hsla(0, 0%, 65%, 0.158);
+    border: 1px solid #a6a6a628;
     box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     backdrop-filter: blur(20px);
@@ -45,6 +53,7 @@
     padding: 1.5rem; /* Reducido el padding */
 }
 
+/* Estilo uniforme para inputs y selects */
 #register-form input,
 #register-form select {
     display: block;
@@ -53,6 +62,7 @@
     margin: 1.5rem 0; /* Reducido el espacio entre los inputs */
     color: var(--color);
     outline: none;
+    color: black;
     background-color: #9191911f;
     border: none;
     border-radius: 5px;
@@ -60,6 +70,7 @@
     letter-spacing: 0.8px;
     font-size: 14px; /* Reducido el tamaño de la fuente */
     backdrop-filter: blur(15px);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 #register-form input:focus,
@@ -68,6 +79,7 @@
     animation: wobble 0.3s ease-in;
 }
 
+/* Estilo para el botón de submit */
 #register-form button {
     background-color: var(--primary-color);
     color: var(--color);
@@ -90,6 +102,7 @@
     transform: scale(1.02);
 }
 
+/* Animación de foco */
 @keyframes wobble {
     0% {
         transform: scale(1.025);

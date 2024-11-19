@@ -17,6 +17,16 @@ const Login = () => {
     e.preventDefault();
     setError('');
 
+    if (emailOrUsername === '') {
+      setError('El campo de correo electrónico o nombre de usuario es obligatorio.');
+      return;
+    }
+
+    if (password === '') {
+      setError('El campo de contraseña es obligatorio.');
+      return;
+    }
+
     try {
       let email = emailOrUsername;
 
@@ -40,9 +50,8 @@ const Login = () => {
       }
 
       // Autenticación con Firebase
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
+      await signInWithEmailAndPassword(auth, email, password);
+      
       // Verificar el rol del usuario después de hacer login
       const userDoc = await getDocs(query(collection(db, 'users'), where('email', '==', email)));
       if (!userDoc.empty) {
@@ -59,7 +68,12 @@ const Login = () => {
       }
 
     } catch (error) {
-      setError('Error de inicio de sesión: ' + error.message);
+      // Manejamos solo los errores personalizados y los errores comunes
+      if (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found') {
+        setError('El correo electrónico o la contraseña son incorrectos.');
+      } else {
+        setError('Error de inicio de sesión. Por favor, intenta de nuevo.');
+      }
     }
   };
 
@@ -74,28 +88,28 @@ const Login = () => {
             className="illustration"
             id="illustration"
           />
-          <h1 className="opacity" id="login-title">LOGIN</h1>
+          <h1 className="opacity" id="login-title">INICIAR SESIÓN</h1>
           {error && <p className="error-message">{error}</p>}
           <form id="login-form" onSubmit={handleSubmit}>
             <input
               type="text" // Cambia el tipo a text para permitir nombre de usuario o email
-              placeholder="EMAIL o NOMBRE DE USUARIO"
+              placeholder="CORREO ELECTRÓNICO o NOMBRE DE USUARIO"
               value={emailOrUsername}
               onChange={(e) => setEmailOrUsername(e.target.value)}
               required
             />
             <input
               type="password"
-              placeholder="PASSWORD"
+              placeholder="CONTRASEÑA"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <button className="opacity" id="submit-button">SUBMIT</button>
+            <button className="opacity" id="submit-button">ENVIAR</button>
           </form>
           <div className="register-forget opacity" id="register-forget">
-            <a href="./register" id="register-link">REGISTER</a>
-            <a href="./forgot-password" id="forgot-password-link">FORGOT PASSWORD</a>
+            <a href="./register" id="register-link">REGISTRARSE</a>
+            <a href="./forgot-password" id="forgot-password-link">OLVIDÓ SU CONTRASEÑA</a>
           </div>
         </div>
         <div className="circle circle-two" id="circle-two"></div>

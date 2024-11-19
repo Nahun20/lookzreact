@@ -1,0 +1,18 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read: if request.auth != null;  // Permitir lectura si el usuario está autenticado
+      allow write: if request.auth != null && request.auth.uid == userId; // Solo el usuario puede escribir en su documento
+    }
+    
+    match /admins/{adminId} {
+      allow read, write: if request.auth != null && request.auth.uid == adminId;
+    }
+
+    // Nueva regla para permitir que los usuarios autenticados escriban en la colección de mensajes
+    match /mensajes/{messageId} {
+      allow write: if request.auth != null;  // Solo los usuarios autenticados pueden escribir
+      allow read: if true;  // Permite la lectura pública (ajustable según lo que necesites)
+    }
+  }
+}

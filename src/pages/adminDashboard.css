@@ -1,162 +1,211 @@
 /* adminDashboard.css */
 
-/* Contenedor principal */
+/* Contenedor principal del dashboard */
 #admin-dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #f4f7fc;
+  min-height: 100vh;
+  animation: fadeIn 1s ease-in-out;
 }
 
-/* Título del Dashboard */
+/* Título principal */
 #admin-dashboard h1 {
-    font-size: 2rem;
-    margin-bottom: 20px; /* Espacio entre el título y el formulario */
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease-in-out forwards;
+}
+
+/* Estilo del subtítulo */
+#admin-dashboard h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInUp 1.4s ease-in-out forwards;
 }
 
 /* Formulario de registro */
-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px; /* Maximo ancho para el formulario */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+#admin-dashboard .form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideInUp 1s ease-out forwards;
+}
+
+#admin-dashboard .form-container:hover {
+  transform: scale(1.02);
 }
 
 /* Estilo para los inputs */
-input {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
+#admin-dashboard .form-container input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f8f8f8;
+  color: #333;
+  transition: all 0.3s ease;
+  transform: scale(0.95);
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
-/* Botón de envío */
-button {
-    padding: 10px;
-    background-color: #2979FF; /* Azul eléctrico */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
+#admin-dashboard .form-container input:focus {
+  border-color: #FF4081;  /* Cambiado a rosa */
+  background-color: #fff;
 }
 
-button:hover {
-    background-color: #1565C0; /* Cambio de color en hover */
+#admin-dashboard .form-container input:focus + input {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Estilo para el botón */
+#admin-dashboard .form-container button {
+  padding: 12px;
+  background-color: #FF4081; /* Cambiado a rosa */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  transform: scale(0.95);
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+#admin-dashboard .form-container button:hover {
+  background-color: #e91e63;  /* Un tono más oscuro de rosa */
+  transform: translateY(-2px);
+}
+
+#admin-dashboard .form-container button:active {
+  transform: translateY(1px);
 }
 
 /* Mensaje de error */
-.error-message {
-    color: red;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
+#admin-dashboard .form-container .error-message {
+  color: #FF4081;  /* Cambiado a rosa */
+  font-size: 1rem;
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease-in-out forwards;
 }
 
-  
-  #admin-dashboard form {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 30px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+/* Estilos de la tabla para mensajes */
+#admin-dashboard .messages-table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-out forwards;
+}
+
+#admin-dashboard .messages-table th, #admin-dashboard .messages-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 1rem;
+}
+
+#admin-dashboard .messages-table th {
+  background-color: #FF4081;  /* Cambiado a rosa */
+  color: white;
+}
+
+#admin-dashboard .messages-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#admin-dashboard .messages-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Enlace */
+#admin-dashboard a {
+  color: #FF4081;  /* Cambiado a rosa */
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: color 0.3s ease;
+}
+
+#admin-dashboard a:hover {
+  color: #e91e63;  /* Un tono más oscuro de rosa */
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
   }
-  
-  #admin-dashboard h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-weight: 700;
+  100% {
+      opacity: 1;
   }
-  
-  #admin-dashboard h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    font-weight: 600;
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
   }
-  
-  #admin-dashboard input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    background: #ff4081;
-    color: #fff;
-    font-size: 1rem;
-    outline: none;
-    transition: 0.3s;
+  100% {
+      opacity: 1;
+      transform: translateY(0);
   }
-  
-  #admin-dashboard input:focus {
-    border-color: #ff4081;
-    background-color: #ffffff
+}
+
+@keyframes slideInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
   }
-  
-  #admin-dashboard button {
-    padding: 12px;
-    width: 100%;
-    background-color: #ff4081;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s;
+  100% {
+      opacity: 1;
+      transform: translateY(0);
   }
-  
-  #admin-dashboard button:hover {
-    background-color: #e73773;
-  }
-  
-  #admin-dashboard .error-message {
-    color: #ff4081;
-    margin-top: 10px;
-    font-size: 1rem;
-    font-weight: 500;
-  }
-  
-  #admin-dashboard a {
-    color: #fff;
-    font-size: 1rem;
-    text-decoration: none;
-    margin-top: 10px;
-    display: block;
-    font-weight: 500;
-    transition: 0.3s;
-  }
-  
-  #admin-dashboard a:hover {
-    color: #ff4081;
-  }
-  
-  @media (max-width: 768px) {
-    #admin-dashboard form {
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  #admin-dashboard .form-container {
       padding: 20px;
       width: 90%;
-    }
-  
-    #admin-dashboard h1 {
-      font-size: 1.8rem;
-    }
-  
-    #admin-dashboard h2 {
-      font-size: 1.4rem;
-    }
-  
-    #admin-dashboard input {
-      font-size: 0.9rem;
-    }
-  
-    #admin-dashboard button {
-      font-size: 1rem;
-    }
   }
-  
+
+  #admin-dashboard h1 {
+      font-size: 2rem;
+  }
+
+  #admin-dashboard h2 {
+      font-size: 1.5rem;
+  }
+
+  #admin-dashboard .form-container input {
+      font-size: 0.9rem;
+  }
+
+  #admin-dashboard .form-container button {
+      font-size: 1rem;
+  }
+}

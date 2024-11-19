@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig'; // Asegúrate de que la ruta sea correcta
+import { auth } from '../firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'; 
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
@@ -11,47 +11,67 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('user'); 
+    const [error, setError] = useState('');
     const navigate = useNavigate();
     const db = getFirestore();
 
-    const handleSubmit = (e) => {
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validatePassword = (password) => {
+        return password.length >= 8 && /\d/.test(password) && /[A-Z]/.test(password);
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
-            alert("Las contraseñas no coinciden");
+        setError(''); 
+
+        if (!email || !password || !confirmPassword) {
+            setError('Por favor, completa todos los campos.');
             return;
         }
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(async (userCredential) => {
-                const user = userCredential.user;
+        if (!validateEmail(email)) {
+            setError('Por favor, ingresa un correo electrónico válido.');
+            return;
+        }
 
-                await setDoc(doc(db, "users", user.uid), {
-                    email: user.email,
-                    role: role,
-                });
+        if (!validatePassword(password)) {
+            setError('La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un número.');
+            return;
+        }
 
-                navigate('/AdminDashboard');
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(`Error: ${errorMessage}`);
+        if (password !== confirmPassword) {
+            setError('Las contraseñas no coinciden.');
+            return;
+        }
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            await setDoc(doc(db, 'users', user.uid), {
+                email: user.email,
+                role: role,
             });
+
+            navigate(role === 'admin' ? '/AdminDashboard' : '/');
+        } catch (error) {
+            setError('Error de registro: ' + error.message);
+        }
     };
 
     return (
         <div id="register-section">
             <div id="register-container">
-                {/* Círculos para el fondo */}
                 <div id="circle-one" className="circle"></div>
                 <div id="circle-two" className="circle"></div>
                 <div id="form-container">
+                    {error && <p className="error-message-above">{error}</p>}
+
                     <form id="register-form" onSubmit={handleSubmit}>
-                        <img
-                            src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png"
-                            alt="illustration"
-                            className="illustration"
-                        />
                         <h1 className="opacity" id="register-title">Registro</h1>
 
                         <input
@@ -88,7 +108,7 @@ const Register = () => {
                 </div>
 
                 <div className="theme-btn-container">
-                    <LoginStyle /> {/* Agregamos el componente LoginStyle para los botones de tema */}
+                    <LoginStyle />
                 </div>
             </div>
         </div>
