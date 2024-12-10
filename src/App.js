@@ -11,7 +11,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import Inicio from './pages/inicio';
 import Catalogo from './pages/catalogo';
 import ProductoDetalle from './pages/ProductoDetalle'; // Importa el componente de detalle
-import Personaliza from './pages/personaliza';
+import Comentarios from './pages/comentarios';
 import Recomendado from './pages/recomendado';
 import Contacto from './pages/contacto';
 import Login from './pages/login';
@@ -79,9 +79,7 @@ function App() {
               </li>
               {user && role && (
                 <>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/personaliza"><i className="fas fa-paint-brush"></i> Personaliza</Link>
-                  </li>
+                  
                   <li className="nav-item">
                     <Link className="nav-link" to="/recomendado"><i className="fas fa-star"></i> Recomendado</Link>
                   </li>
@@ -93,6 +91,9 @@ function App() {
                       <li className="nav-item">
                         <Link className="nav-link" to="/registrar-producto"><i className="fas fa-plus"></i> Registrar Producto</Link>
                       </li>
+                      <li className="nav-item">
+                    <Link className="nav-link" to="/comentarios"><i className="fas fa-message"></i> Comentarios</Link>
+                  </li>
                     </>
                   )}
                   <li className="nav-item">
@@ -123,7 +124,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/catalogo" element={<Catalogo />} />
-        <Route path="/personaliza" element={<Personaliza />} />
+        <Route path="/comentarios" element={<Comentarios />} />
         <Route path="/recomendado" element={<Recomendado />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/login" element={<Login />} />
