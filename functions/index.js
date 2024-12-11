@@ -1,11 +1,11 @@
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
 admin.initializeApp();
 
 exports.assignRoleToUser = functions.https.onCall(async (data, context) => {
   // Verifica si el usuario está autenticado
   if (!context.auth) {
-    throw new functions.https.HttpsError('unauthenticated', 'Solo los usuarios autenticados pueden asignar roles');
+    throw new functions.https.HttpsError("unauthenticated", "Solo los usuarios autenticados pueden asignar roles");
   }
 
   const userId = data.userId;
@@ -13,12 +13,17 @@ exports.assignRoleToUser = functions.https.onCall(async (data, context) => {
 
   try {
     // Asigna el rol al usuario en la base de datos
-    await admin.firestore().collection('users').doc(userId).set({
-      rol: role
-    }, { merge: true });
+    await admin.firestore()
+      .collection("users")
+      .doc(userId)
+      .set(
+        {rol: role},
+        {merge: true},
+      );
 
-    return { message: 'Rol asignado correctamente' };
+
+    return {message: "Rol asignado correctamente"};
   } catch (error) {
-    throw new functions.https.HttpsError('internal', error.message, error);
+    throw new functions.https.HttpsError("internal", error.message, error);
   }
 });

@@ -100,7 +100,7 @@ const Register = () => {
                             onChange={(e) => setRole(e.target.value)}
                         >
                             <option value="user">Usuario</option>
-                            <option value="admin">Administrador</option>
+                            
                         </select>
 
                         <button type="submit">Registrarse</button>

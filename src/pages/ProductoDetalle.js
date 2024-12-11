@@ -43,7 +43,7 @@ const ProductoDetalle = () => {
             <strong>${producto.price}</strong>
           </div>
           <div className="add-to-cart-btn">
-            <button className="btn">Agregar al carrito</button>
+            
           </div>
         </div>
       </div>
